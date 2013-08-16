@@ -1,0 +1,133 @@
+{%extends "base.html.twig"%}
+
+{%block titulo%}Curso Inbox: Login{%endblock%}
+
+{%block stylesheet %}
+
+<style type="text/css">
+        body {
+            padding-top: 100px;
+        }
+
+        .alert-success{
+            max-width: 95%;
+            margin: 0 auto 20px;
+        }
+
+
+
+        .form-signin {
+            max-width: 400px;
+            margin-top: 200px;
+            padding: 19px 29px 29px;
+            margin: 0 auto 20px;
+            background-color: #fff;
+            border: 1px solid #e5e5e5;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        }
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin input[type="text"],
+        .form-signin input[type="password"] {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            padding: 7px 9px;
+        }
+
+        input.parsley-success
+        {
+            color: #468847 !important;
+            background-color: #DFF0D8 !important;
+            border: 1px solid #D6E9C6 !important;
+        }
+
+
+        input.parsley-error
+        {
+            color: #B94A48 !important;
+            background-color: #F2DEDE !important;
+            border: 1px solid #EED3D7 !important;
+            margin-bottom: 0px;
+            padding: 0px 0px;
+        }
+
+
+        ul.parsley-error-list
+        {
+            font-size: 11px;
+            font-family: arial;
+            margin: -10px;
+            margin-bottom: 10px;
+            margin-left: 2px;
+            list-style-type:none; 
+        }
+
+        ul.parsley-error-list li
+        {
+            line-height: 11px;
+        }
+
+
+    </style>
+{%endblock%}
+
+{% block container %}
+
+
+    <div class="container">
+
+        <form class="form-signin" method="POST" action="{{path('login_login_homepage')}}" data-validate="parsley">
+            <h2 class="form-signin-heading">Login</h2>
+            <input type="text" class="input-block-level" placeholder="Nome do usuário" name="username" data-trigger="change" data-minlength="6" data-required="true">
+            <input type="password" class="input-block-level" placeholder="Senha" name="password" data-required="true" data-trigger="change">
+            <label class="checkbox">
+                <input type="checkbox" name="remember" value="remember-me"> Mantenha-me logado!
+            </label>
+
+            <button class="btn" type="submit">Entrar</button>
+            <button class="btn" type="button" onclick="window.location.href = '{{path('login_login_signup')}}'">Criar usuário</button>
+            <button class="btn btn-primary" type="button" data-toggle="modal" href="#myModal">Lançar modal</button>
+        </form>
+
+    </div> 
+    
+
+
+    <!-- /container -->
+
+    <!-- Button to trigger modal -->
+
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Modal header</h3>
+        </div>
+        <div class="modal-body">
+            <p>One fine body…</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+
+
+    {% if name is defined %}
+
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Alerta: {{ name }}</strong>
+    </div>
+    {% endif %}   
+
+{% endblock %}
