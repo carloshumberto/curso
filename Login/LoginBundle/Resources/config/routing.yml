@@ -1,5 +1,5 @@
 login_login_homepage:
-    pattern:  /login
+    pattern:  /
     defaults: { _controller: LoginLoginBundle:Default:index }
 
 login_login_signup:

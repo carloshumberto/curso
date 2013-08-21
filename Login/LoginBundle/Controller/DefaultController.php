@@ -35,7 +35,7 @@ class DefaultController extends Controller {
 
                     $session->set("login", $login);
                 }
-                return $this->render('LoginLoginBundle:Default:welcome.html.twig', array('name' => $user->getFirstName()));
+                return $this->render('DashboardCourseBundle:Default:index.html.twig', array('name' => $user->getFirstName()));
             } else {
                 return $this->render('LoginLoginBundle:Default:login.html.twig', array('name' => "Login Failed"));
             }
@@ -49,10 +49,17 @@ class DefaultController extends Controller {
                 $user = $repository->findOneBy(array('userName' => $username, 'password' => $password));
 
                 if ($user) {
-                    return $this->render('LoginLoginBundle:Default:welcome.html.twig', array('name' => $user->getFirstName()));
+                    //return $this->render('LoginLoginBundle:Default:welcome.html.twig', array('name' => $user->getFirstName()));
+                    //return $this->render('DashboardCourseBundle:Default:index.html.twig', array('name' => $user->getFirstName()));
+                    $name = $user->getFirstName();
+                } else {
+                    $name = "System Failed on getting user info!";
                 }
+                return $this->render('LoginLoginBundle:Default:login.with.session.html.twig', array('name' => $name));
+            } else {
+               //Sem sessão
+               return $this->render('LoginLoginBundle:Default:login.html.twig');
             }
-            return $this->render('LoginLoginBundle:Default:login.html.twig');
         }
     }
 
@@ -84,7 +91,8 @@ class DefaultController extends Controller {
 
         $session = $this->getRequest()->getSession();
         $session->clear();
-        return $this->render('LoginLoginBundle:Default:login.html.twig');
+        return $this->render('LoginLoginBundle:Default:login.html.twig', array('name' => null));
+        
     }
 
     private function emailAction(Users $user) {

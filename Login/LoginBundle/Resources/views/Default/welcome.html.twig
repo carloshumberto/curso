@@ -4,12 +4,19 @@
 
 <style type="text/css">
         body {
-            padding-top: 40px;
+            padding-top: 80px;
             padding-bottom: 40px;
-            background-color: #f5f5f5;
         }
     </style>
+
 {%endblock%}
+
+{%block controlbuttons%}    
+    <div class='top-account-control visible-desktop'>
+        <a href="{{path('login_login_logout')}}" class="top-sign-out">Sair</a>
+        <a href="{{path('dashboard_course_homepage')}}" class="top-create-account">Dashboard</a>
+    </div>
+{% endblock %}
 
 {% block container %}
 
@@ -19,15 +26,18 @@
 
     {% if name is defined %}
         <h2>Welcome: {{ name }}</h2>
-        
-        <!--a href="{{path('login_login_logout')}}">Logout</a-->
-        
-        <button class="btn btn-primary" type="button" onclick="window.location.href='{{path('login_login_logout')}}'">Log out</button>
+
+<!--a href="{{path('login_login_logout')}}">Logout</a-->     
+<!--button class="btn btn-primary" type="button" onclick="window.location.href='{{path('login_login_logout')}}'">Log out</button-->
 
     {% endif %}  
 
-    
+
     </div> <!-- /container -->
 
 
+{% endblock %}
+
+
+{% block footer%}
 {% endblock %}

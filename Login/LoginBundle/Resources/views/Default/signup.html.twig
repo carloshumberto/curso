@@ -1,9 +1,11 @@
 {%extends "base.html.twig"%}
 
-{%block titulo%}Curso Inbox: Criar usuário{%endblock%}
+{%block titulo%}Osiris: Criar usuário{%endblock%}
 
 
 {%block stylesheet %}
+
+<link href="{{asset('bundles/common/css/parsley/field-alert.css')}}" rel="stylesheet">
 
 <style type="text/css">
         body {
@@ -35,44 +37,11 @@
             padding: 7px 9px;
         }
 
-        input.parsley-success
-        {
-            color: #468847 !important;
-            background-color: #DFF0D8 !important;
-            border: 1px solid #D6E9C6 !important;
-        }
-
-
-        input.parsley-error
-        {
-            color: #B94A48 !important;
-            background-color: #F2DEDE !important;
-            border: 1px solid #EED3D7 !important;
-            margin-bottom: 0px;
-            padding: 0px 0px;
-        }
-
-
-        ul.parsley-error-list
-        {
-            font-size: 11px;
-            font-family: arial;
-            margin: -10px;
-            margin-bottom: 10px;
-            margin-left: 2px;
-            list-style-type:none; 
-        }
-
-        ul.parsley-error-list li
-        {
-            line-height: 11px;
-        }
-
     </style>
 {%endblock%}
 
 {% block container %}
-    <div class="container">
+    <!--div class="container">
 
         <form class="form-signin" method="POST" action="{{path('login_login_signup')}}" data-validate="parsley">
 
@@ -86,9 +55,148 @@
             <input type="password" class="input-block-level" name="password" data-trigger="change" data-minlength="6" data-required="true">
 
             <button class="btn" type="submit">OK</button>
-            <button class="btn btn-primary" type="button" onclick="window.location.href='{{path('login_login_homepage')}}'">Sign in</button>
+            <button class="btn btn-primary" type="button" onclick="window.location.href = '{{path('login_login_homepage')}}'">Sign in</button>
 
         </form>
 
-    </div> <!-- /container -->
+    </div--> 
+    <section class='section-wrapper create-account-page-w'>
+        <div class='container'>
+            <div class='row'>
+                <div class='span9'>
+                    <div class='white-card extra-padding'>
+                        <fieldset>                        
+                            <form class="form" method="POST" action="{{path('login_login_signup')}}" data-validate="parsley">
+                                <div class='row-fluid'>
+                                    <div class='span12'>
+                                        <h1 class='form-header'>Criar conta</h1>
+                                    </div>
+                                </div>
+                                <div class='row-fluid'>
+                                    <div class='span12'>
+                                        <div class='form-side-info'>
+                                            <p>Crei sua conta e seja bem vindo ao nosso sistema.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='span4'>
+                                        <div class='control-group'>
+                                            <label>Primeiro nome</label>
+                                            <input type="text" placeholder='Primeiro nome...' class="input-block-level" name="firstname" data-trigger="change" data-minlength="6" data-required="true">
+                                        </div>
+                                    </div>
+                                    <div class='span4'>
+                                        <div class='control-group'>
+                                            <label>Sobrenome</label>
+                                            <input class='span4' placeholder='Sobrenome...' type='text' name="surrename">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='span4'>
+                                        <div class='control-group'>
+                                            <label>E-mail</label>
+                                            <input class='span4' placeholder='E-mail...' type='text' name="email">
+                                        </div>
+                                    </div>
+                                    <div class='span4'>
+                                        <div class='control-group'>
+                                            <label>Endereço do Email</label>
+                                            <select class="span4" id="state" name="state">
+                                                <option value="">Selecione seu estado</option>              
+                                                <option value="Acre">Acre</option>
+                                                <option value="Alagoas">Alagoas</option>
+                                                <option value="Amapá">Amapá</option>
+                                                <option value="Amazonas">Amazonas</option>
+                                                <option value="Bahia">Bahia</option>
+                                                <option value="Ceará">Ceará</option>
+                                                <option value="Distrito Federal">Distrito Federal</option>
+                                                <option value="Espírito Santo">Espírito Santo</option>
+                                                <option value="Goiás">Goiás</option>
+                                                <option value="Maranhão">Maranhão</option>
+                                                <option value="Mato Grosso">Mato Grosso</option>
+                                                <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                                                <option value="Minas Gerais">Minas Gerais</option>
+                                                <option value="Pará">Pará</option>
+                                                <option value="Paraíba">Paraíba</option>
+                                                <option value="Paraná">Paraná</option>
+                                                <option value="Pernambuco">Pernambuco</option>
+                                                <option value="Piauí">Piauí</option>
+                                                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                                                <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                                                <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                                                <option value="Rondônia">Rondônia</option>
+                                                <option value="Rorâima">Rorâima</option>
+                                                <option value="Santa Catarina">Santa Catarina</option>
+                                                <option value="São Paulo">São Paulo</option>
+                                                <option value="Sergipe">Sergipe</option>
+                                                <option value="Tocantins">Tocantins</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>                                    
+                                <div class='row'>
+                                    <div class='span4'>
+                                        <div class='control-group'>
+                                            <label>Usuário</label>
+                                            <input type="text" placeholder='Usuário...' class="input-block-level" name="username" data-trigger="change" data-minlength="6" data-required="true" >
+                                        </div>
+                                    </div>
+                                    <div class='span4'>
+                                        <div class='control-group'>
+                                            <label>Password</label>
+                                            <input type="password" placeholder='Senha...' class="input-block-level" name="password" data-trigger="change" data-minlength="6" data-required="true">
+                                        </div>
+                                    </div>    
+                                </div>
+
+                                <!--div class='row-fluid'>
+                                    <div class='span12'>
+                                        <div class='form-actions no-margin-bottom'>
+                                            <button class="btn btn-primary" name="button" type="submit">Complete Registration</button>
+                                        </div>
+                                    </div>
+                                </div-->
+                                <div class="modal-footer">
+                                    <button class="btn" type="submit">Confirmar</button>
+                                    <!--button class="btn btn-primary" type="button" onclick="window.location.href = '{{path('login_login_homepage')}}'">Sign in</button-->
+                                </div>  
+                            </form>
+                        </fieldset>
+
+                    </div>
+                </div>
+                <div class='span3'>
+                    <div class='blog-side-text-block widget-filled widget-yellow'>
+                        <h3>Algumas Dicas:</h3>
+                        <ul class='big-iconed-tips'>
+                            <li>
+                                <i class='icon-credit-card'></i>
+                                Cadastro gratuíto
+                            </li>
+                            <li>
+                                <i class='icon-lock'></i>
+                                100% Seguro
+                            </li>
+                            <li>
+                                <i class='icon-comments'></i>
+                                24 Horas de suporte online
+                            </li>
+                            <li>
+                                <i class='icon-cogs'></i>
+                                Aprendizado customizado
+                            </li>
+                            <li>
+                                <i class='icon-heart'></i>
+                                Sua evolução é a razão do nosso trabalho
+                            </li>
+                        </ul>
+                        <p>Ut diam arcu, dictum ut vulputate sed, iaculis nec lorem. Fusce pharetra nisl vitae nisl ultricies ut malesuada leo fringilla.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

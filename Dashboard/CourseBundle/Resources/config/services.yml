@@ -1,0 +1,7 @@
+parameters:
+#    dashboard_course.example.class: Dashboard\CourseBundle\Example
+
+services:
+#    dashboard_course.example:
+#        class: %dashboard_course.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

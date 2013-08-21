@@ -1,0 +1,57 @@
+{%extends "base.html.twig"%}
+
+{%block titulo%}Osiris: Dashboard{%endblock%}
+
+
+{%block stylesheet %}
+
+<style type="text/css">
+        body {
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+    </style>
+
+{%endblock%}
+
+{%block controlbuttons%}    
+    <div class='top-account-control visible-desktop'>
+        <a href="{{path('login_login_logout')}}" class="top-create-account">Sair</a>
+        <a href="{{path('dashboard_course_homepage')}}" class="top-sign-in">Perfil</a>
+    </div>
+
+    <form id="frm_login" method="POST" action="{{path('dashboard_course_homepage')}}" data-validate="parsley">
+        <div class='login-box'>
+            <a class='close login-box-close' href='#'>&times;</a>
+            <h4 class='login-box-head'>Perfil</h4>
+            <div class='control-group'>
+                <label>Informações do Usuário</label>
+                <!--input type="text" class="input-block-level" placeholder="Nome do usuário" name="username" data-trigger="change" data-minlength="6" data-required="true"-->
+            </div>
+            <div class='control-group'>
+                <div class='login-actions'>
+                    <button class='btn btn-primary'>Detalhar</button>
+                </div>
+            </div>        
+        </div>
+    </form>  
+{% endblock %}
+
+
+{% block container %}
+
+
+    <div class="container">
+
+
+    {% if name is defined %}
+        <h2>Estou no Dashboard: {{ name }}</h2>
+
+    {% endif %}  
+
+
+    </div>
+
+{% endblock %}
+
+{%block footer %}{% endblock %}
